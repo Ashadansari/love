@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crush Compliments</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: white;
+            flex-direction: column;
+            text-align: center;
+            position: relative;
+        }
+
+        /* ❤️ Heart Emoji Styling */
+        .heart {
+            font-size: 50px;
+            position: absolute;
+            top: 60px; /* Adjusted Down */
+            text-align: center;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .input-container {
+            position: absolute;
+            top: 25%; /* Moved Down a Bit */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        .input-container.hidden {
+            opacity: 0;
+            transform: translateY(-20px);
+            pointer-events: none;
+        }
+
+        input {
+            padding: 12px;
+            font-size: 18px;
+            border: 2px solid #ff66b2;
+            border-radius: 5px;
+            outline: none;
+            width: 280px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #ff66b2;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff3385;
+        }
+
+        .container {
+            display: none;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 20px;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .card {
+            border-radius: 2rem;
+            overflow: hidden;
+            position: relative;
+            max-width: 250px;
+            height: max-content;
+            transform: scale(0.8);
+            opacity: 0;
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        }
+
+        .container.show .card {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        img {
+            width: 100%;
+            scale: 1.05;
+        }
+
+        .compliment-container {
+            display: none;
+            margin-top: 30px;
+            font-size: 28px;
+            color: #ff3385;
+            font-weight: bold;
+            transition: opacity 1s ease-in-out;
+            font-family: 'Great Vibes', cursive;
+        }
+
+        .compliment-container.fade-out {
+            opacity: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- ❤️ Heart Emoji (Slightly Lower) -->
+    <div class="heart">❤️</div>
+
+    <!-- Input Field -->
+    <div class="input-container" id="inputBox">
+        <h2>Enter Your Name 💖 to see the magic </h2>
+        <input type="text" id="crushName" placeholder="Enter Shaista...">
+        <button onclick="showImages()">Submit</button>
+    </div>
+
+    <!-- Images (Hidden Initially) -->
+    <div class="container" id="imageBox"></div>
+
+    <!-- Compliment Text -->
+    <div class="compliment-container" id="complimentBox">💕 You are the reason my heart beats faster! 💕</div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
